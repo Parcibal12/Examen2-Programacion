@@ -1,0 +1,18 @@
+<h2>Lista de ideas de negocio</h2>
+
+<div *ngIf="ideas.length === 0; else ideas_existentes">
+  <p>No hay ideas de negocio registradas aún.</p>
+</div>
+
+<ng-template #ideas_existentes>
+  <div *ngFor="let idea of ideas" class="tarjeta-idea">
+    <h3>{{ idea.titulo }}</h3>
+    <p><strong>Descripción:</strong> {{ idea.descripcion_detallada }}</p>
+    <p><strong>Categoría:</strong> {{ idea.categoria }}</p>
+    <p><strong>Estado:</strong> {{ idea.estado }}</p>
+    <div class="acciones">
+      <button class="btn btn-primary" (click)="editar_idea(idea)">Editar</button>
+      <button class="boton-eliminar" (click)="eliminar_idea(idea.id)">Eliminar</button>
+    </div>
+  </div>
+</ng-template>

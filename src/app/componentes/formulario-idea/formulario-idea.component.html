@@ -1,0 +1,34 @@
+<div class="contenedor-formulario">
+  <h2>{{ idea.id !== '0' ? 'Editar Idea' : 'Crear Nueva Idea' }}</h2>
+  <form [formGroup]="formulario_idea" (ngSubmit)="guardar_idea()">
+    <div class="grupo-formulario">
+      <label for="titulo">Título:</label>
+      <input id="titulo" type="text" formControlName="titulo" required>
+    </div>
+
+    <div class="grupo-formulario">
+      <label for="descripcion_detallada">Descripción Detallada:</label>
+      <textarea id="descripcion_detallada" formControlName="descripcion_detallada" required></textarea>
+    </div>
+
+    <div class="grupo-formulario">
+      <label for="categoria">Categoría:</label>
+      <input id="categoria" type="text" formControlName="categoria" required>
+    </div>
+
+    <div class="grupo-formulario">
+      <label for="estado">Estado:</label>
+      <select id="estado" formControlName="estado" required>
+        <option value="Borrador">Borrador</option>
+        <option value="Validando">Validando</option>
+        <option value="Descartada">Descartada</option>
+      </select>
+    </div>
+
+    <div class="acciones-formulario">
+      <button type="submit" [disabled]="!formulario_idea.valid">Guardar</button>
+      <button type="button" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>
+<p>formulario-idea works!</p>
